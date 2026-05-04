@@ -100,22 +100,22 @@ const THRESHOLDS = {
   pitch: {
     low: 130,     // Below 130 Hz
     medium: 200,  // 130-200 Hz
-    high: 200     // Above 200 Hz
+    high: 280     // Above 200 Hz
   },
   volume: {
     low: -40,     // Below -40 dB
     medium: -25,  // -40 to -25 dB
-    high: -25     // Above -25 dB
+    high: -10     // Above -25 dB
   },
   tempo: {
     slow: 100,    // Below 100 WPM
     medium: 150,  // 100-150 WPM
-    fast: 150     // Above 150 WPM
+    fast: 180     // Above 150 WPM
   },
   variability: {
     low: 20,      // Below 20 Hz std dev
     medium: 40,   // 20-40 Hz std dev
-    high: 40      // Above 40 Hz std dev
+    high: 60      // Above 40 Hz std dev
   }
 };
 

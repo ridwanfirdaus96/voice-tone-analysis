@@ -34,6 +34,11 @@ export function useAudioEngine() {
     try {
       setError(null);
 
+      // Check browser support
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        throw new Error('Browser does not support microphone access');
+      }
+
       // Get microphone access
       const stream = await navigator.mediaDevices.getUserMedia({
         audio: {
@@ -117,11 +122,13 @@ export function useAudioEngine() {
    */
   const togglePause = useCallback(() => {
     if (!audioContextRef.current) return;
-
-    if (isPaused) {
+    
+    const state = audioContextRef.current.state;
+    
+    if (isPaused && state === 'suspended') {
       audioContextRef.current.resume();
       setIsPaused(false);
-    } else {
+    } else if (!isPaused && state === 'running') {
       audioContextRef.current.suspend();
       setIsPaused(true);
     }
